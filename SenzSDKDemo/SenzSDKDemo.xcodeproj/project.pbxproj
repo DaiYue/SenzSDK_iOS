@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */; };
+		EE920A021AD3C00D0007D8F7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */; };
+		EE920A051AD3C0260007D8F7 /* SNZAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE920A041AD3C0260007D8F7 /* SNZAudioManager.m */; };
+		EE920A081AD3C3470007D8F7 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EE920A071AD3C3470007D8F7 /* sample.mp3 */; };
 		EEC13FC01AD3B190008B7E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FBF1AD3B190008B7E5E /* main.m */; };
 		EEC13FC31AD3B190008B7E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FC21AD3B190008B7E5E /* AppDelegate.m */; };
 		EEC13FC61AD3B190008B7E5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FC51AD3B190008B7E5E /* ViewController.m */; };
@@ -27,6 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE9209FE1AD3BACC0007D8F7 /* SNZLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZLocationManager.h; sourceTree = "<group>"; };
+		EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZLocationManager.m; sourceTree = "<group>"; };
+		EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EE920A031AD3C0260007D8F7 /* SNZAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZAudioManager.h; sourceTree = "<group>"; };
+		EE920A041AD3C0260007D8F7 /* SNZAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZAudioManager.m; sourceTree = "<group>"; };
+		EE920A071AD3C3470007D8F7 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sample.mp3; path = ../../../../sample.mp3; sourceTree = "<group>"; };
 		EEC13FBA1AD3B190008B7E5E /* SenzSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenzSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC13FBE1AD3B190008B7E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEC13FBF1AD3B190008B7E5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE920A021AD3C00D0007D8F7 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +71,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE9209FD1AD3BA950007D8F7 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				EE9209FE1AD3BACC0007D8F7 /* SNZLocationManager.h */,
+				EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */,
+				EE920A031AD3C0260007D8F7 /* SNZAudioManager.h */,
+				EE920A041AD3C0260007D8F7 /* SNZAudioManager.m */,
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
+		EE920A061AD3C2F80007D8F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EE920A071AD3C3470007D8F7 /* sample.mp3 */,
+			);
+			name = Resources;
+			path = ../resources;
+			sourceTree = "<group>";
+		};
 		EEC13FB11AD3B190008B7E5E = {
 			isa = PBXGroup;
 			children = (
+				EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */,
 				EEC13FBC1AD3B190008B7E5E /* SenzSDKDemo */,
 				EEC13FD61AD3B190008B7E5E /* SenzSDKDemoTests */,
 				EEC13FBB1AD3B190008B7E5E /* Products */,
@@ -81,6 +113,7 @@
 		EEC13FBC1AD3B190008B7E5E /* SenzSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				EE9209FD1AD3BA950007D8F7 /* sdk */,
 				EEC13FC11AD3B190008B7E5E /* AppDelegate.h */,
 				EEC13FC21AD3B190008B7E5E /* AppDelegate.m */,
 				EEC13FC41AD3B190008B7E5E /* ViewController.h */,
@@ -96,6 +129,7 @@
 		EEC13FBD1AD3B190008B7E5E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE920A061AD3C2F80007D8F7 /* Resources */,
 				EEC13FBE1AD3B190008B7E5E /* Info.plist */,
 				EEC13FBF1AD3B190008B7E5E /* main.m */,
 			);
@@ -168,6 +202,12 @@
 				TargetAttributes = {
 					EEC13FB91AD3B190008B7E5E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = XFCDXZK26Z;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					EEC13FD21AD3B190008B7E5E = {
 						CreatedOnToolsVersion = 6.2;
@@ -201,6 +241,7 @@
 			files = (
 				EEC13FC91AD3B190008B7E5E /* Main.storyboard in Resources */,
 				EEC13FCE1AD3B190008B7E5E /* LaunchScreen.xib in Resources */,
+				EE920A081AD3C3470007D8F7 /* sample.mp3 in Resources */,
 				EEC13FCB1AD3B190008B7E5E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,7 +261,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC13FC61AD3B190008B7E5E /* ViewController.m in Sources */,
+				EE920A051AD3C0260007D8F7 /* SNZAudioManager.m in Sources */,
 				EEC13FC31AD3B190008B7E5E /* AppDelegate.m in Sources */,
+				EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */,
 				EEC13FC01AD3B190008B7E5E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,9 +386,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SenzSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -353,9 +399,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SenzSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -412,6 +461,7 @@
 				EEC13FDF1AD3B190008B7E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EEC13FE01AD3B190008B7E5E /* Build configuration list for PBXNativeTarget "SenzSDKDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +470,7 @@
 				EEC13FE21AD3B190008B7E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

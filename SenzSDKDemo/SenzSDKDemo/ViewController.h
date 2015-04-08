@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreMotion/CoreMotion.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <AVAudioSessionDelegate>
 
 
 @end
