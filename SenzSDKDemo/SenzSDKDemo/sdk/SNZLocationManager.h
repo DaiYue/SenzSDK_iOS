@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SNZLocationManager : NSObject
+@interface SNZLocationManager : NSObject<CLLocationManagerDelegate>
+
+- (void)fetchLocation;
 
 @end

@@ -8,6 +8,15 @@
 
 #import "SNZAudioManager.h"
 
+@interface SNZAudioManager ()
+
+// silent background
+@property (nonatomic, strong) AVQueuePlayer *slientPlayer;
+@property (nonatomic, assign) CGFloat lastRecordTimeStamp;
+@property (nonatomic, strong) id timeObserver;
+
+@end
+
 @implementation SNZAudioManager
 
 @end

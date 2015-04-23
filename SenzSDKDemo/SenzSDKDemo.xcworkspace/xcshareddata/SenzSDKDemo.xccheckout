@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3AC1564C-CE36-4E71-B2CB-9C9F4165E279</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SenzSDKDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B10E589E83F3F4F3CC4186E63948531C3F7133BC</key>
+		<string>github.com:DaiYue/SenzSDK_iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SenzSDKDemo/SenzSDKDemo.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B10E589E83F3F4F3CC4186E63948531C3F7133BC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:DaiYue/SenzSDK_iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B10E589E83F3F4F3CC4186E63948531C3F7133BC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B10E589E83F3F4F3CC4186E63948531C3F7133BC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>repo</string>
+		</dict>
+	</array>
+</dict>
+</plist>
