@@ -48,7 +48,7 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 
         self.motionManager = [SNZMotionManager new];
         self.locationManager = [SNZLocationManager new];
-        self.beaconManager = [SNZBeaconManager new];
+//        self.beaconManager = [SNZBeaconManager new];
     }
     return self;
 }
@@ -72,8 +72,12 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 
     // init player
     AVPlayerItem* playerItem = [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:kSilentMusicFileName withExtension:@"mp3"]];
-    self.slientPlayer = [[AVQueuePlayer alloc] initWithPlayerItem:playerItem];
-    self.slientPlayer.actionAtItemEnd = AVPlayerActionAtItemEndAdvance;
+    self.slientPlayer = [AVQueuePlayer queuePlayerWithItems:@[playerItem]];
+    self.slientPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[self.slientPlayer currentItem]];
 
     // init observer
     __weak typeof(self)weakSelf = self;
@@ -97,6 +101,11 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
     self.isLogging = YES;
 
     return YES;
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    AVPlayerItem* playerItem = [notification object];
+    [playerItem seekToTime:kCMTimeZero];
 }
 
 - (void)stopLogging {
