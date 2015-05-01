@@ -25,7 +25,7 @@
         CLLocationManager* locationManager = [CLLocationManager new];
         locationManager.delegate = self;
 
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
         locationManager.distanceFilter = 10.0;
 
         [locationManager requestWhenInUseAuthorization];
@@ -35,8 +35,13 @@
     return self;
 }
 
-- (void)fetchLocation {
-    [self.locationManager startUpdatingLocation];
+- (void)startUpdating {
+//    [self.locationManager startUpdatingLocation];
+    [self.locationManager startMonitoringSignificantLocationChanges];
+}
+
+- (void)boostUpdating {
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -46,12 +51,11 @@
     NSLog(@"Fetch location failed with error: %@", error);
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    [self.locationManager stopUpdatingLocation];
-
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     SNZLocationData* model = [SNZLocationData dataWithLocation:newLocation];
     [SNZCommonStore saveDataWithClassName:@"Location" model:model];
+
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
 }
 
 @end

@@ -9,14 +9,60 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SenzSDKDemo/sdk/SNZUserDataLogger.m"
-            timestampString = "451483330.313162"
+            filePath = "SenzSDKDemo/sdk/SNZLocationManager.m"
+            timestampString = "451489494.658072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-startLogging"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SenzSDKDemo/model/SNZLocationData.h"
+            timestampString = "451493243.405682"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "speed"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SNZLocationData speed]"
+                  moduleName = "SenzSDKDemo"
+                  urlString = "file:///Users/qitmac000222/project/15SenzSDK/repo/SenzSDKDemo/SenzSDKDemo/model/SNZLocationData.h"
+                  timestampString = "451493243.422394"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SNZLocationData setSpeed:]"
+                  moduleName = "SenzSDKDemo"
+                  urlString = "file:///Users/qitmac000222/project/15SenzSDK/repo/SenzSDKDemo/SenzSDKDemo/model/SNZLocationData.h"
+                  timestampString = "451493243.42265"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

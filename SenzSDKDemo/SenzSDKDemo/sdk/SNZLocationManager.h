@@ -11,6 +11,7 @@
 
 @interface SNZLocationManager : NSObject<CLLocationManagerDelegate>
 
-- (void)fetchLocation;
+- (void)startUpdating;
+- (void)boostUpdating;
 
 @end

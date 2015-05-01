@@ -60,7 +60,9 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 #pragma mark - Start & Stop
 
 - (BOOL)startLogging {
-    [self.beaconManager startListening];
+    [self.locationManager startUpdating];
+
+//    [self.beaconManager startListening];
 
     // configure AVAudioSession
     NSError *sessionError = nil;
@@ -91,8 +93,7 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
                                 __typeof(self) strongSelf = weakSelf;
                                 NSString *timeString = [NSString stringWithFormat:@"%02.2f", (float)time.value / (float)time.timescale];
                                 NSLog(@"Time is: %@", timeString);
-
-                                [strongSelf.locationManager fetchLocation];
+                                [strongSelf.locationManager boostUpdating];
 //                                [strongSelf.motionManager startListeningFor:strongSelf.sensorLoggingPeriodLength inteval:strongSelf.sensorLoggingInteval];
                             }];
 
