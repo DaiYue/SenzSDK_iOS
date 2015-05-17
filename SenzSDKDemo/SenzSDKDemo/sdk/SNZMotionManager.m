@@ -9,6 +9,7 @@
 #import "SNZMotionManager.h"
 #import "SNZMotionData.h"
 #import "SNZCommonStore.h"
+#import "SNZBackgroundModeManager.h"
 
 @interface SNZMotionManager ()
 
@@ -19,6 +20,10 @@
 
 @end
 
+static const CGFloat kDefaultTriggerLoggingInteval = 15;
+static const CGFloat kDefaultSensorLoggingInteval = 0.1;
+static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
+
 @implementation SNZMotionManager
 
 - (instancetype)init
@@ -26,6 +31,11 @@
     self = [super init];
     if (self) {
         self.motionManager = [CMMotionManager new];
+
+        // init data
+        self.triggerLoggingInteval = kDefaultTriggerLoggingInteval;
+        self.sensorUpdatingInteval = kDefaultSensorLoggingInteval;
+        self.loggingPeriodLength = kDefaultSensorLoggingPeriodLength;
 
         // accelerometer
         if (![self.motionManager isAccelerometerAvailable]) {
@@ -40,6 +50,22 @@
         //TODO: error handling
     }
     return self;
+}
+
+- (void)startListening {
+    SNZBackgroundModeManager* backgroundModeManager = [SNZBackgroundModeManager sharedInstance];
+    [backgroundModeManager turnOnBackgroundMode];
+
+        __weak typeof(self)weakSelf = self;
+    [backgroundModeManager addObserverWithIdentifier:@"SNZMotionManager" forInteval:self.triggerLoggingInteval queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        if (time.value < 0.01) {
+            return;
+        }
+
+        NSString *timeString = [NSString stringWithFormat:@"%02.2f", (float)time.value / (float)time.timescale];
+        NSLog(@"Time is: %@", timeString);
+        [weakSelf startListeningFor:weakSelf.loggingPeriodLength inteval:weakSelf.sensorUpdatingInteval];
+    }];
 }
 
 - (void)startListeningFor:(CGFloat)periodLength inteval:(CGFloat)inteval {

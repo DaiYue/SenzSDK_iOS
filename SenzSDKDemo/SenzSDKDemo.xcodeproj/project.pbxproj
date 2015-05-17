@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AF94D256822A8004CBA6426E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70BE4B9D24E9711A3826C65 /* libPods.a */; };
 		EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */; };
-		EE920A051AD3C0260007D8F7 /* SNZAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE920A041AD3C0260007D8F7 /* SNZAudioManager.m */; };
 		EEA674B91ADAE6740005A355 /* SNZUserDataLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA674B81ADAE6740005A355 /* SNZUserDataLogger.m */; };
 		EEA674BC1ADAEFCE0005A355 /* SNZMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA674BB1ADAEFCE0005A355 /* SNZMotionManager.m */; };
 		EEA674C21ADB8BE70005A355 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */; };
@@ -25,6 +24,9 @@
 		EEC13FCB1AD3B190008B7E5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC13FCA1AD3B190008B7E5E /* Images.xcassets */; };
 		EEC13FCE1AD3B190008B7E5E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEC13FCC1AD3B190008B7E5E /* LaunchScreen.xib */; };
 		EEC13FDA1AD3B190008B7E5E /* SenzSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FD91AD3B190008B7E5E /* SenzSDKDemoTests.m */; };
+		EED860FF1B086F3700C4AE5E /* SNZBackgroundModeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EED860FE1B086F3700C4AE5E /* SNZBackgroundModeManager.m */; };
+		EED861091B087F9800C4AE5E /* NSArray+SNZUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EED861021B087F9800C4AE5E /* NSArray+SNZUtility.m */; };
+		EED8610B1B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EED861061B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m */; };
 		EEFBE8471ADBDD6C00E6CF17 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEFBE8461ADBDD6C00E6CF17 /* sample.mp3 */; };
 		EEFBE84E1ADBE0CB00E6CF17 /* SNZDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEFBE84D1ADBE0CB00E6CF17 /* SNZDBManager.m */; };
 		EEFBE8511ADBE12400E6CF17 /* SNZLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = EEFBE8501ADBE12400E6CF17 /* SNZLocationData.m */; };
@@ -47,8 +49,6 @@
 		EE9209FE1AD3BACC0007D8F7 /* SNZLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZLocationManager.h; sourceTree = "<group>"; };
 		EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZLocationManager.m; sourceTree = "<group>"; };
 		EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		EE920A031AD3C0260007D8F7 /* SNZAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZAudioManager.h; sourceTree = "<group>"; };
-		EE920A041AD3C0260007D8F7 /* SNZAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZAudioManager.m; sourceTree = "<group>"; };
 		EEA674B71ADAE6740005A355 /* SNZUserDataLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZUserDataLogger.h; sourceTree = "<group>"; };
 		EEA674B81ADAE6740005A355 /* SNZUserDataLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZUserDataLogger.m; sourceTree = "<group>"; };
 		EEA674BA1ADAEFCE0005A355 /* SNZMotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZMotionManager.h; sourceTree = "<group>"; };
@@ -74,6 +74,12 @@
 		EEC13FD31AD3B190008B7E5E /* SenzSDKDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SenzSDKDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC13FD81AD3B190008B7E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEC13FD91AD3B190008B7E5E /* SenzSDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SenzSDKDemoTests.m; sourceTree = "<group>"; };
+		EED860FD1B086F3700C4AE5E /* SNZBackgroundModeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZBackgroundModeManager.h; sourceTree = "<group>"; };
+		EED860FE1B086F3700C4AE5E /* SNZBackgroundModeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZBackgroundModeManager.m; sourceTree = "<group>"; };
+		EED861011B087F9800C4AE5E /* NSArray+SNZUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SNZUtility.h"; sourceTree = "<group>"; };
+		EED861021B087F9800C4AE5E /* NSArray+SNZUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SNZUtility.m"; sourceTree = "<group>"; };
+		EED861051B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SNZUtility.h"; sourceTree = "<group>"; };
+		EED861061B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SNZUtility.m"; sourceTree = "<group>"; };
 		EEFBE8461ADBDD6C00E6CF17 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
 		EEFBE84C1ADBE0CB00E6CF17 /* SNZDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZDBManager.h; sourceTree = "<group>"; };
 		EEFBE84D1ADBE0CB00E6CF17 /* SNZDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZDBManager.m; sourceTree = "<group>"; };
@@ -115,9 +121,10 @@
 		EE9209FD1AD3BA950007D8F7 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				EED861001B087F5E00C4AE5E /* utils */,
 				EEA674B71ADAE6740005A355 /* SNZUserDataLogger.h */,
 				EEA674B81ADAE6740005A355 /* SNZUserDataLogger.m */,
-				EEA674CC1ADBB8180005A355 /* manager */,
+				EEA674CC1ADBB8180005A355 /* managers */,
 				EEA674C81ADBB7E10005A355 /* model */,
 				EEFBE84B1ADBE0AA00E6CF17 /* store */,
 			);
@@ -156,7 +163,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		EEA674CC1ADBB8180005A355 /* manager */ = {
+		EEA674CC1ADBB8180005A355 /* managers */ = {
 			isa = PBXGroup;
 			children = (
 				EEA674BA1ADAEFCE0005A355 /* SNZMotionManager.h */,
@@ -165,10 +172,10 @@
 				EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */,
 				EEA674C51ADBAEDF0005A355 /* SNZBeaconManager.h */,
 				EEA674C61ADBAEDF0005A355 /* SNZBeaconManager.m */,
-				EE920A031AD3C0260007D8F7 /* SNZAudioManager.h */,
-				EE920A041AD3C0260007D8F7 /* SNZAudioManager.m */,
+				EED860FD1B086F3700C4AE5E /* SNZBackgroundModeManager.h */,
+				EED860FE1B086F3700C4AE5E /* SNZBackgroundModeManager.m */,
 			);
-			name = manager;
+			name = managers;
 			sourceTree = "<group>";
 		};
 		EEC13FB11AD3B190008B7E5E = {
@@ -232,6 +239,17 @@
 				EEC13FD81AD3B190008B7E5E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EED861001B087F5E00C4AE5E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				EED861011B087F9800C4AE5E /* NSArray+SNZUtility.h */,
+				EED861021B087F9800C4AE5E /* NSArray+SNZUtility.m */,
+				EED861051B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.h */,
+				EED861061B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 		EEFBE84B1ADBE0AA00E6CF17 /* store */ = {
@@ -391,12 +409,14 @@
 				EEA674CF1ADBD0560005A355 /* SNZMotionData.m in Sources */,
 				EEFBE8511ADBE12400E6CF17 /* SNZLocationData.m in Sources */,
 				EEC13FC61AD3B190008B7E5E /* ViewController.m in Sources */,
-				EE920A051AD3C0260007D8F7 /* SNZAudioManager.m in Sources */,
 				EEA674CB1ADBB80B0005A355 /* SNZCommonStore.m in Sources */,
+				EED860FF1B086F3700C4AE5E /* SNZBackgroundModeManager.m in Sources */,
+				EED8610B1B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m in Sources */,
 				EEFBE84E1ADBE0CB00E6CF17 /* SNZDBManager.m in Sources */,
 				EEA674C71ADBAEDF0005A355 /* SNZBeaconManager.m in Sources */,
 				EEC13FC31AD3B190008B7E5E /* AppDelegate.m in Sources */,
 				EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */,
+				EED861091B087F9800C4AE5E /* NSArray+SNZUtility.m in Sources */,
 				EEC13FC01AD3B190008B7E5E /* main.m in Sources */,
 				EEA674BC1ADAEFCE0005A355 /* SNZMotionManager.m in Sources */,
 			);
@@ -524,7 +544,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SenzSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -540,7 +560,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SenzSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

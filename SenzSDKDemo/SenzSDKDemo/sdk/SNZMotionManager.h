@@ -12,7 +12,16 @@
 
 @interface SNZMotionManager : NSObject
 
-- (void)startListeningFor:(CGFloat)periodLength inteval:(CGFloat)inteval;
+/// in seconds
+@property (nonatomic, assign) CGFloat triggerLoggingInteval;
+
+// sensor
+
+/// in seconds
+@property (nonatomic, assign) CGFloat sensorUpdatingInteval;
+@property (nonatomic, assign) CGFloat loggingPeriodLength;
+
+- (void)startListening;
 - (void)stopListening;
 
 @end

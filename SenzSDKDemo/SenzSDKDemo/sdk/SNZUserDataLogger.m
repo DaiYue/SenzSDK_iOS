@@ -10,6 +10,7 @@
 #import "SNZMotionManager.h"
 #import "SNZLocationManager.h"
 #import "SNZBeaconManager.h"
+#import "SNZBackgroundModeManager.h"
 
 @interface SNZUserDataLogger ()
 
@@ -29,11 +30,6 @@
 
 @end
 
-static NSString* const kSilentMusicFileName = @"sample";
-static const CGFloat kDefaultTriggerLoggingInteval = 15;
-static const CGFloat kDefaultSensorLoggingInteval = 0.1;
-static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
-
 @implementation SNZUserDataLogger
 
 - (instancetype)init
@@ -41,10 +37,6 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
     self = [super init];
     if (self) {
         self.isLogging = NO;
-
-        self.triggerLoggingInteval = kDefaultTriggerLoggingInteval;
-        self.sensorLoggingInteval = kDefaultSensorLoggingInteval;
-        self.sensorLoggingPeriodLength = kDefaultSensorLoggingPeriodLength;
 
         self.motionManager = [SNZMotionManager new];
         self.locationManager = [SNZLocationManager new];
@@ -60,46 +52,10 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 #pragma mark - Start & Stop
 
 - (BOOL)startLogging {
-    [self.locationManager startUpdating];
+//    [self.locationManager startUpdating];
+    [self.motionManager startListening];
 
 //    [self.beaconManager startListening];
-
-    // configure AVAudioSession
-    NSError *sessionError = nil;
-    AVAudioSession* session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions: AVAudioSessionCategoryOptionDefaultToSpeaker error:&sessionError];
-    if (sessionError != nil) {
-        return NO;
-    }
-
-    // init player
-    AVPlayerItem* playerItem = [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:kSilentMusicFileName withExtension:@"mp3"]];
-    self.slientPlayer = [AVQueuePlayer queuePlayerWithItems:@[playerItem]];
-    self.slientPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:[self.slientPlayer currentItem]];
-
-    // init observer
-    __weak typeof(self)weakSelf = self;
-    self.timeObserver = [self.slientPlayer addPeriodicTimeObserverForInterval:CMTimeMake(self.triggerLoggingInteval * 1000, 1000)
-                            queue:dispatch_get_main_queue()
-                            usingBlock:^(CMTime time){
-                                if (time.value < 0.01) {
-                                    return;
-                                }
-
-                                __typeof(self) strongSelf = weakSelf;
-                                NSString *timeString = [NSString stringWithFormat:@"%02.2f", (float)time.value / (float)time.timescale];
-                                NSLog(@"Time is: %@", timeString);
-                                [strongSelf.locationManager boostUpdating];
-//                                [strongSelf.motionManager startListeningFor:strongSelf.sensorLoggingPeriodLength inteval:strongSelf.sensorLoggingInteval];
-                            }];
-
-    [self.slientPlayer play];
-
-    self.isLogging = YES;
 
     return YES;
 }
@@ -112,7 +68,7 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 - (void)stopLogging {
     [self.motionManager stopListening];
 
-    [self.slientPlayer pause];
+    [[SNZBackgroundModeManager sharedInstance] turnOffBackgroundMode];
     self.isLogging = NO;
 }
 

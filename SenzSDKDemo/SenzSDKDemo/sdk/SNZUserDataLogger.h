@@ -13,16 +13,6 @@
 
 @interface SNZUserDataLogger : NSObject<AVAudioSessionDelegate>
 
-/// in seconds
-@property (nonatomic, assign) CGFloat triggerLoggingInteval;
-
-// sensor
-
-/// in seconds
-@property (nonatomic, assign) CGFloat sensorLoggingInteval;
-/// in seconds
-@property (nonatomic, assign) CGFloat sensorLoggingPeriodLength;
-
 - (BOOL)startLogging;
 - (void)stopLogging;
 //

@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SenzSDKDemo/sdk/SNZLocationManager.m"
-            timestampString = "451489494.658072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SenzSDKDemo/model/SNZLocationData.h"
             timestampString = "451493243.405682"
             startingColumnNumber = "9223372036854775807"
@@ -40,13 +24,14 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[SNZLocationData speed]"
                   moduleName = "SenzSDKDemo"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qitmac000222/project/15SenzSDK/repo/SenzSDKDemo/SenzSDKDemo/model/SNZLocationData.h"
-                  timestampString = "451493243.422394"
+                  timestampString = "453545459.501417"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
                   endingLineNumber = "33"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -54,13 +39,14 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[SNZLocationData setSpeed:]"
                   moduleName = "SenzSDKDemo"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qitmac000222/project/15SenzSDK/repo/SenzSDKDemo/SenzSDKDemo/model/SNZLocationData.h"
-                  timestampString = "451493243.42265"
+                  timestampString = "453545459.50161"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
                   endingLineNumber = "33"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
