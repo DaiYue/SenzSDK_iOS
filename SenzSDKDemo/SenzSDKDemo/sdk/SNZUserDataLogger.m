@@ -7,7 +7,7 @@
 //
 
 #import "SNZUserDataLogger.h"
-#import "SNZMotionManager.h"
+#import "SNZSensorManager.h"
 #import "SNZLocationManager.h"
 #import "SNZBeaconManager.h"
 #import "SNZBackgroundModeManager.h"
@@ -20,7 +20,7 @@
 @property (nonatomic, strong) id timeObserver;
 
 // motion
-@property (nonatomic, strong) SNZMotionManager* motionManager;
+@property (nonatomic, strong) SNZSensorManager* motionManager;
 
 // location
 @property (nonatomic, strong) SNZLocationManager* locationManager;
@@ -38,7 +38,7 @@
     if (self) {
         self.isLogging = NO;
 
-        self.motionManager = [SNZMotionManager new];
+        self.motionManager = [SNZSensorManager new];
         self.locationManager = [SNZLocationManager new];
 //        self.beaconManager = [SNZBeaconManager new];
     }

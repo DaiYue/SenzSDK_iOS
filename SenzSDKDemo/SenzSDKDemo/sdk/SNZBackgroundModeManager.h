@@ -18,6 +18,6 @@
 - (void)turnOffBackgroundMode;
 
 /** inteval in seconds */
-- (void)addObserverWithIdentifier:(NSString*)identifier forInteval:(NSInteger)inteval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block;
+- (void)addObserverWithIdentifier:(NSString*)identifier forInteval:(NSInteger)inteval usingBlock:(void (^)(CMTime time))block;
 
 @end

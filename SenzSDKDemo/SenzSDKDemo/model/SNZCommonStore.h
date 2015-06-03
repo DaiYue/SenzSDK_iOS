@@ -12,7 +12,13 @@
 
 @interface SNZCommonStore : NSObject
 
+// == Common Data ==
 + (NSString*)deviceUUID;
+
+// == DB or LeanCloud ==
++ (void)saveDataEventuallyWithClassName:(NSString*)className model:(JSONModel*)model;
+
+// == LeanCloud ==
 + (void)saveDataWithClassName:(NSString*)className dictionary:(NSDictionary*)dictionary;
 + (void)saveDataWithClassName:(NSString*)className model:(JSONModel*)model;
 

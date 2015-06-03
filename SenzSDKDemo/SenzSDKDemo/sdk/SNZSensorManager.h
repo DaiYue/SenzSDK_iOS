@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
 
-@interface SNZMotionManager : NSObject
+@interface SNZSensorManager : NSObject
 
 /// in seconds
 @property (nonatomic, assign) CGFloat triggerLoggingInteval;

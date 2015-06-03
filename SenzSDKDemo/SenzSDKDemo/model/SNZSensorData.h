@@ -13,16 +13,26 @@
 @class CMAccelerometerData;
 @class CMGyroData;
 
-@interface SNZMotionData : JSONModel
+/// 包含单个sensor单次数据
+@interface SNZSensorData : JSONModel
 
-@property (nonatomic, strong) NSString* deviceUUID;
 @property (nonatomic, assign) CGFloat timestamp;
 
-@property (nonatomic, assign) CGFloat x;
-@property (nonatomic, assign) CGFloat y;
-@property (nonatomic, assign) CGFloat z;
+@property (nonatomic, strong) NSString* sensorName;
+@property (nonatomic, strong) NSArray* values;
 
 + (instancetype)dataWithAccelerometerData:(CMAccelerometerData*)data;
 + (instancetype)dataWithGyroData:(CMGyroData*)data;
+
+@end
+
+/// 包含一系列 SNZSensorData
+@interface SNZSensorEvent : JSONModel
+
+@property (nonatomic, strong) NSString* deviceUUID;
+
+@property (nonatomic, strong) NSMutableArray* events;
+
+- (void)appendSensorData:(SNZSensorData*)sensorData;
 
 @end

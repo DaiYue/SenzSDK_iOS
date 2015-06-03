@@ -110,13 +110,13 @@ static NSString* const kSilentMusicFileName = @"sample";
 
 #pragma mark - Observers
 
-- (void)addObserverWithIdentifier:(NSString*)identifier forInteval:(NSInteger)inteval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block {
+- (void)addObserverWithIdentifier:(NSString*)identifier forInteval:(NSInteger)inteval usingBlock:(void (^)(CMTime time))block {
     if (identifier.length == 0) {
         return;
     }
 
     id timeObserver = [self.slientPlayer addPeriodicTimeObserverForInterval:CMTimeMake(inteval * 1000, 1000)
-                            queue:dispatch_get_main_queue()
+                            queue:dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
                             usingBlock:block];
     [self.observerDictionary setObjectSafe:timeObserver forKey:identifier];
 }
