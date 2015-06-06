@@ -10,6 +10,8 @@
 		AF94D256822A8004CBA6426E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70BE4B9D24E9711A3826C65 /* libPods.a */; };
 		EE3978031B1F5CDB00277C13 /* SNZReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3978021B1F5CDB00277C13 /* SNZReachability.m */; };
 		EE3978061B1F637C00277C13 /* SNZWebUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3978051B1F637C00277C13 /* SNZWebUtils.m */; };
+		EE39781E1B219F1100277C13 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39781D1B219F1100277C13 /* SystemConfiguration.framework */; };
+		EE3978391B22C26D00277C13 /* SNZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3978381B22C26D00277C13 /* SNZModel.m */; };
 		EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */; };
 		EEA674B91ADAE6740005A355 /* SNZUserDataLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA674B81ADAE6740005A355 /* SNZUserDataLogger.m */; };
 		EEA674BC1ADAEFCE0005A355 /* SNZSensorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA674BB1ADAEFCE0005A355 /* SNZSensorManager.m */; };
@@ -52,6 +54,10 @@
 		EE3978021B1F5CDB00277C13 /* SNZReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZReachability.m; sourceTree = "<group>"; };
 		EE3978041B1F637C00277C13 /* SNZWebUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNZWebUtils.h; path = utils/SNZWebUtils.h; sourceTree = "<group>"; };
 		EE3978051B1F637C00277C13 /* SNZWebUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNZWebUtils.m; path = utils/SNZWebUtils.m; sourceTree = "<group>"; };
+		EE39781D1B219F1100277C13 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EE3978361B22C09800277C13 /* SNZDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNZDefs.h; sourceTree = "<group>"; };
+		EE3978371B22C26D00277C13 /* SNZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZModel.h; sourceTree = "<group>"; };
+		EE3978381B22C26D00277C13 /* SNZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZModel.m; sourceTree = "<group>"; };
 		EE9209FE1AD3BACC0007D8F7 /* SNZLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZLocationManager.h; sourceTree = "<group>"; };
 		EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZLocationManager.m; sourceTree = "<group>"; };
 		EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE39781E1B219F1100277C13 /* SystemConfiguration.framework in Frameworks */,
 				EEA674C41ADB8BF60005A355 /* CoreLocation.framework in Frameworks */,
 				EEA674C31ADB8BEF0005A355 /* CoreBluetooth.framework in Frameworks */,
 				EEA674C21ADB8BE70005A355 /* AVFoundation.framework in Frameworks */,
@@ -133,11 +140,20 @@
 			path = libs;
 			sourceTree = "<group>";
 		};
+		EE3978351B22C07B00277C13 /* def */ = {
+			isa = PBXGroup;
+			children = (
+				EE3978361B22C09800277C13 /* SNZDefs.h */,
+			);
+			name = def;
+			sourceTree = "<group>";
+		};
 		EE9209FD1AD3BA950007D8F7 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
 				EEA674B71ADAE6740005A355 /* SNZUserDataLogger.h */,
 				EEA674B81ADAE6740005A355 /* SNZUserDataLogger.m */,
+				EE3978351B22C07B00277C13 /* def */,
 				EE3978001B1F5C9700277C13 /* libs */,
 				EED861001B087F5E00C4AE5E /* utils */,
 				EEA674CC1ADBB8180005A355 /* managers */,
@@ -159,6 +175,7 @@
 		EEA674C11ADB8BC50005A355 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EE39781D1B219F1100277C13 /* SystemConfiguration.framework */,
 				EEA674BF1ADB8BBA0005A355 /* CoreBluetooth.framework */,
 				EEA674BD1ADB8BB40005A355 /* CoreLocation.framework */,
 				EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */,
@@ -170,6 +187,8 @@
 		EEA674C81ADBB7E10005A355 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				EE3978371B22C26D00277C13 /* SNZModel.h */,
+				EE3978381B22C26D00277C13 /* SNZModel.m */,
 				EEA674CD1ADBD0560005A355 /* SNZSensorData.h */,
 				EEA674CE1ADBD0560005A355 /* SNZSensorData.m */,
 				EEFBE84F1ADBE12400E6CF17 /* SNZLocationData.h */,
@@ -438,6 +457,7 @@
 				EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */,
 				EED861091B087F9800C4AE5E /* NSArray+SNZUtility.m in Sources */,
 				EEC13FC01AD3B190008B7E5E /* main.m in Sources */,
+				EE3978391B22C26D00277C13 /* SNZModel.m in Sources */,
 				EEA674BC1ADAEFCE0005A355 /* SNZSensorManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

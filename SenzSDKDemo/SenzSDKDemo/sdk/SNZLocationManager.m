@@ -9,6 +9,7 @@
 #import "SNZLocationManager.h"
 #import "SNZLocationData.h"
 #import "SNZCommonStore.h"
+#import "SNZDefs.h"
 
 @interface SNZLocationManager ()
 
@@ -25,37 +26,40 @@
         CLLocationManager* locationManager = [CLLocationManager new];
         locationManager.delegate = self;
 
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         locationManager.distanceFilter = 10.0;
 
-        [locationManager requestWhenInUseAuthorization];
+        [locationManager requestAlwaysAuthorization];
 
         self.locationManager = locationManager;
     }
     return self;
 }
 
-- (void)startUpdating {
+#pragma - Start & Stop listening
+
+- (void)startListening {
 //    [self.locationManager startUpdatingLocation];
     [self.locationManager startMonitoringSignificantLocationChanges];
 }
+
+- (void)stopListening {
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
+#pragma mark - Handling Location
 
 - (void)boostUpdating {
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Fetch location failed with error: %@", error);
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    SNZLocationData* model = [SNZLocationData dataWithLocation:newLocation];
-    [SNZCommonStore saveDataWithClassName:@"Location" model:model];
-
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)nextLocation fromLocation:(CLLocation *)prevLocation {
+    SNZLocationData* model = [SNZLocationData dataWithLocation:nextLocation];
+    [SNZCommonStore saveDataEventuallyWithClassName:kSNZAVClassNameLocation model:model];
 }
 
 @end

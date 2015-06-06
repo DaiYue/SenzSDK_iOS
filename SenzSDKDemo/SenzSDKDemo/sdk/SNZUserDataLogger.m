@@ -20,7 +20,7 @@
 @property (nonatomic, strong) id timeObserver;
 
 // motion
-@property (nonatomic, strong) SNZSensorManager* motionManager;
+@property (nonatomic, strong) SNZSensorManager* sensorManager;
 
 // location
 @property (nonatomic, strong) SNZLocationManager* locationManager;
@@ -38,7 +38,7 @@
     if (self) {
         self.isLogging = NO;
 
-        self.motionManager = [SNZSensorManager new];
+        self.sensorManager = [SNZSensorManager new];
         self.locationManager = [SNZLocationManager new];
 //        self.beaconManager = [SNZBeaconManager new];
     }
@@ -52,21 +52,17 @@
 #pragma mark - Start & Stop
 
 - (BOOL)startLogging {
-//    [self.locationManager startUpdating];
-    [self.motionManager startListening];
+    [self.locationManager startListening];
+    [self.sensorManager startListening];
 
 //    [self.beaconManager startListening];
 
     return YES;
 }
 
-- (void)playerItemDidReachEnd:(NSNotification *)notification {
-    AVPlayerItem* playerItem = [notification object];
-    [playerItem seekToTime:kCMTimeZero];
-}
-
 - (void)stopLogging {
-    [self.motionManager stopListening];
+    [self.sensorManager stopListening];
+    [self.locationManager stopListening];
 
     [[SNZBackgroundModeManager sharedInstance] turnOffBackgroundMode];
     self.isLogging = NO;

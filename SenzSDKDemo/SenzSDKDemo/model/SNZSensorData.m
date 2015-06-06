@@ -16,14 +16,13 @@
 {
     self = [super init];
     if (self) {
-
+        self.timestamp = [[NSDate date] timeIntervalSince1970];
     }
     return self;
 }
 
 + (instancetype)dataWithAccelerometerData:(CMAccelerometerData*)data {
     SNZSensorData* model = [SNZSensorData new];
-    model.timestamp = [[NSDate date] timeIntervalSince1970];
     model.sensorName = @"acc";
     model.values = @[@(data.acceleration.x), @(data.acceleration.y), @(data.acceleration.z)];
 
@@ -32,7 +31,6 @@
 
 + (instancetype)dataWithGyroData:(CMGyroData*)data {
     SNZSensorData* model = [SNZSensorData new];
-    model.timestamp = [[NSDate date] timeIntervalSince1970];
     model.sensorName = @"gyro";
     model.values = @[@(data.rotationRate.x), @(data.rotationRate.y), @(data.rotationRate.z)];
 
@@ -47,7 +45,8 @@
 {
     self = [super init];
     if (self) {
-        self.events = [NSMutableArray array];
+        self.deviceUUID = [SNZCommonStore deviceUUID];
+        self.events = (NSMutableArray<SNZSensorData>*)[NSMutableArray array];
     }
     return self;
 }

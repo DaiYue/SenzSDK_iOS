@@ -8,24 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "JSONModel.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface SNZCoordinate : JSONModel
+#import "SNZModel.h"
 
-@property (nonatomic, assign) CGFloat latitude;
-@property (nonatomic, assign) CGFloat longitude;
-
-+ (instancetype)coordinateWithCLCoordinate:(CLLocationCoordinate2D)coordinate;
-
-@end
-
-@interface SNZLocationData : JSONModel
+@interface SNZLocationData : SNZModel
 
 @property (nonatomic, strong) NSString* deviceUUID;
 @property (nonatomic, assign) CGFloat timestamp;
 
-@property (nonatomic, assign) NSString* coordinate;
+@property (nonatomic, assign) CLLocation* location;
 @property (nonatomic, assign) CGFloat altitude;
 @property (nonatomic, assign) CGFloat horizontalAccuracy;
 @property (nonatomic, assign) CGFloat verticalAccuracy;

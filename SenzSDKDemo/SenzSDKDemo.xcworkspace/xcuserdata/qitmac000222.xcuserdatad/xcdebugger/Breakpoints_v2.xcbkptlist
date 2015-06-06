@@ -4,51 +4,13 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SenzSDKDemo/model/SNZLocationData.h"
-            timestampString = "451493243.405682"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "speed"
-            landmarkType = "19">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SNZLocationData speed]"
-                  moduleName = "SenzSDKDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qitmac000222/project/15SenzSDK/repo/SenzSDKDemo/SenzSDKDemo/model/SNZLocationData.h"
-                  timestampString = "453545459.501417"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SNZLocationData setSpeed:]"
-                  moduleName = "SenzSDKDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/qitmac000222/project/15SenzSDK/repo/SenzSDKDemo/SenzSDKDemo/model/SNZLocationData.h"
-                  timestampString = "453545459.50161"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

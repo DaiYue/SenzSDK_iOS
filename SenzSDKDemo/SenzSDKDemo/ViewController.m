@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "SNZUserDataLogger.h"
+#import "SNZSensorData.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface ViewController ()
 

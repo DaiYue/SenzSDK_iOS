@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 #import "JSONModel.h"
+#import "SNZModel.h"
 
 @class CMAccelerometerData;
 @class CMGyroData;
+
+@protocol SNZSensorData
+
+@end
 
 /// 包含单个sensor单次数据
 @interface SNZSensorData : JSONModel
@@ -27,11 +33,11 @@
 @end
 
 /// 包含一系列 SNZSensorData
-@interface SNZSensorEvent : JSONModel
+@interface SNZSensorEvent : SNZModel
 
 @property (nonatomic, strong) NSString* deviceUUID;
 
-@property (nonatomic, strong) NSMutableArray* events;
+@property (nonatomic, strong) NSMutableArray<SNZSensorData>* events;
 
 - (void)appendSensorData:(SNZSensorData*)sensorData;
 

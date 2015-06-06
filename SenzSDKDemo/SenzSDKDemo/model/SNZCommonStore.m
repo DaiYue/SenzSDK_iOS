@@ -8,7 +8,7 @@
 
 #import "SNZCommonStore.h"
 #import <AVOSCloud/AVOSCloud.h>
-#import "JSONModel.h"
+#import "SNZModel.h"
 #import "SNZWebUtils.h"
 #import "SNZReachability.h"
 
@@ -62,13 +62,14 @@
 }
 
 #pragma mark - DB or LeanCloud
-+ (void)saveDataEventuallyWithClassName:(NSString *)className model:(JSONModel *)model {
+
++ (void)saveDataEventuallyWithClassName:(NSString *)className model:(SNZModel *)model {
     if (model == nil) {
         return;
     }
 
     if ([SNZWebUtils isWifiAvailable]) {
-        [self saveDataWithClassName:className model:model];
+        [self uploadDataWithClassName:className model:model];
     } else {
         // cache in db
     }
@@ -76,7 +77,7 @@
 
 #pragma mark - LeanCloud
 
-+ (void)saveDataWithClassName:(NSString*)className dictionary:(NSDictionary*)dictionary {
++ (void)uploadDataWithClassName:(NSString*)className dictionary:(NSDictionary*)dictionary {
     if (dictionary == nil) {
         return;
     }
@@ -85,14 +86,8 @@
     [object saveInBackground];
 }
 
-+ (void)saveDataWithClassName:(NSString*)className model:(JSONModel*)model {
-    if (model == nil) {
-        return;
-    }
-
-    NSLog(@"[%@] %@", className, [model toJSONString]);
-
-    AVObject* object = [AVObject objectWithClassName:className dictionary:[model toDictionary]];
++ (void)uploadDataWithClassName:(NSString*)className model:(SNZModel*)model {
+    AVObject* object = [model avObject];
     [object saveInBackground];
 }
 

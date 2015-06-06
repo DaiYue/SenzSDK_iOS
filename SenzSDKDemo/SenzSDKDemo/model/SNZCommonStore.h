@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class JSONModel;
+@class SNZModel;
 
 @interface SNZCommonStore : NSObject
 
@@ -16,10 +16,10 @@
 + (NSString*)deviceUUID;
 
 // == DB or LeanCloud ==
-+ (void)saveDataEventuallyWithClassName:(NSString*)className model:(JSONModel*)model;
++ (void)saveDataEventuallyWithClassName:(NSString*)className model:(SNZModel*)model;
 
 // == LeanCloud ==
-+ (void)saveDataWithClassName:(NSString*)className dictionary:(NSDictionary*)dictionary;
-+ (void)saveDataWithClassName:(NSString*)className model:(JSONModel*)model;
++ (void)uploadDataWithClassName:(NSString*)className dictionary:(NSDictionary*)dictionary;
++ (void)uploadDataWithClassName:(NSString*)className model:(SNZModel*)model;
 
 @end

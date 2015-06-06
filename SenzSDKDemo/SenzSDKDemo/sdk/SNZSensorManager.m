@@ -10,16 +10,17 @@
 #import "SNZSensorData.h"
 #import "SNZCommonStore.h"
 #import "SNZBackgroundModeManager.h"
+#import "SNZDefs.h"
 
 @interface SNZSensorManager ()
 
-@property (nonatomic, retain) CMMotionManager * motionManager;
+@property (nonatomic, strong) CMMotionManager * motionManager;
 
 @property (atomic, assign) CGFloat startListeningTimestamp;
 @property (nonatomic, assign) CGFloat listeningPeriodLength;
-@property (nonatomic, assign) BOOL isSensorOn;
+@property (atomic, assign) BOOL isSensorOn;
 
-@property (nonatomic, strong) SNZSensorEvent* sensorEvent;
+@property (atomic, strong) SNZSensorEvent* sensorEvent;
 
 @end
 
@@ -70,8 +71,6 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
             return;
         }
 
-        NSString *timeString = [NSString stringWithFormat:@"%02.2f", (float)time.value / (float)time.timescale];
-        NSLog(@"Time is: %@", timeString);
         [weakSelf turnOnSensorFor:weakSelf.loggingPeriodLength]; // in seconds
     }];
 }
@@ -80,7 +79,7 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
     [self turnOffSensor];
 }
 
-#pragma - Logging Period
+#pragma - Handling Sensor
 
 - (void)turnOnSensorFor:(CGFloat)periodLength {
 
@@ -103,11 +102,13 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 }
 
 - (void)sensorCallbackWithData:(SNZSensorData*)data {
-    if (self.isSensorOn == NO || data == nil) {
-        return; // discard late data
-    }
+    @synchronized(self.sensorEvent) {
+        if (self.isSensorOn == NO || data == nil) {
+            return; // discard late data
+        }
 
-    [self.sensorEvent appendSensorData:data];
+        [self.sensorEvent appendSensorData:data];
+    }
 
     if ([self shouldTurnOffSensor:data.timestamp]) {
         [self turnOffSensor];
@@ -116,17 +117,19 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 }
 
 - (BOOL)shouldTurnOffSensor:(CGFloat)timeStamp {
-    return timeStamp - self.startListeningTimestamp > self.listeningPeriodLength * 1000; // in microseconds
+    return timeStamp - self.startListeningTimestamp > self.listeningPeriodLength; // in microseconds
 }
 
 - (void)turnOffSensor {
-    self.isSensorOn = NO;
-
     [self.motionManager stopAccelerometerUpdates];
     [self.motionManager stopGyroUpdates];
 
-    [SNZCommonStore saveDataEventuallyWithClassName:@"UserSensor" model:self.sensorEvent];
-    self.sensorEvent = nil;
+    @synchronized(self.sensorEvent) {
+        self.isSensorOn = NO;
+
+        [SNZCommonStore saveDataEventuallyWithClassName:kSNZAVClassNameSensor model:self.sensorEvent];
+        self.sensorEvent = nil;
+    }
 }
 
 @end
