@@ -24,9 +24,7 @@
 		EEC13FC01AD3B190008B7E5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FBF1AD3B190008B7E5E /* main.m */; };
 		EEC13FC31AD3B190008B7E5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FC21AD3B190008B7E5E /* AppDelegate.m */; };
 		EEC13FC61AD3B190008B7E5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FC51AD3B190008B7E5E /* ViewController.m */; };
-		EEC13FC91AD3B190008B7E5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEC13FC71AD3B190008B7E5E /* Main.storyboard */; };
 		EEC13FCB1AD3B190008B7E5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC13FCA1AD3B190008B7E5E /* Images.xcassets */; };
-		EEC13FCE1AD3B190008B7E5E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEC13FCC1AD3B190008B7E5E /* LaunchScreen.xib */; };
 		EEC13FDA1AD3B190008B7E5E /* SenzSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FD91AD3B190008B7E5E /* SenzSDKDemoTests.m */; };
 		EED860FF1B086F3700C4AE5E /* SNZBackgroundTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = EED860FE1B086F3700C4AE5E /* SNZBackgroundTimer.m */; };
 		EED861091B087F9800C4AE5E /* NSArray+SNZUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EED861021B087F9800C4AE5E /* NSArray+SNZUtility.m */; };
@@ -381,8 +379,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEC13FC91AD3B190008B7E5E /* Main.storyboard in Resources */,
-				EEC13FCE1AD3B190008B7E5E /* LaunchScreen.xib in Resources */,
 				EEFBE8471ADBDD6C00E6CF17 /* sample.mp3 in Resources */,
 				EEC13FCB1AD3B190008B7E5E /* Images.xcassets in Resources */,
 			);

@@ -7,7 +7,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>location需求描述2</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>location需求描述</string>
+	<string>location需求描述1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
