@@ -9,7 +9,6 @@
 #import "SNZLocationData.h"
 #import <AVOSCloud/AVOSCloud.h>
 
-#import "SNZDefs.h"
 #import "SNZCommonStore.h"
 
 @implementation SNZLocationData
@@ -47,6 +46,23 @@
     [object setObject:@(self.location.verticalAccuracy) forKey:@"verticalAccuracy"];
 
     return object;
+}
+
+#pragma mark - NSCoding
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.deviceUUID = [aDecoder decodeObjectForKey:@"deviceUUID"];
+        self.timestamp = [[aDecoder decodeObjectForKey:@"timestamp"] doubleValue];
+        self.location = [aDecoder decodeObjectForKey:@"location"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.deviceUUID forKey:@"deviceUUID"];
+    [aCoder encodeObject:@(self.timestamp) forKey:@"timestamp"];
+    [aCoder encodeObject:self.location forKey:@"location"];
 }
 
 @end

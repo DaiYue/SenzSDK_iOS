@@ -10,7 +10,8 @@
 #import "SNZSensorManager.h"
 #import "SNZLocationManager.h"
 #import "SNZBeaconManager.h"
-#import "SNZBackgroundModeManager.h"
+#import "SNZBackgroundTimer.h"
+#import "SNZCommonStore.h"
 
 @interface SNZUserDataLogger ()
 
@@ -40,7 +41,9 @@
 
         self.sensorManager = [SNZSensorManager new];
         self.locationManager = [SNZLocationManager new];
-//        self.beaconManager = [SNZBeaconManager new];
+        //        self.beaconManager = [SNZBeaconManager new];
+
+        [SNZCommonStore sharedInstance].shouldUploadCachedDataWhenWifiAvailable = YES;
     }
     return self;
 }
@@ -54,7 +57,6 @@
 - (BOOL)startLogging {
     [self.locationManager startListening];
     [self.sensorManager startListening];
-
 //    [self.beaconManager startListening];
 
     return YES;
@@ -64,36 +66,8 @@
     [self.sensorManager stopListening];
     [self.locationManager stopListening];
 
-    [[SNZBackgroundModeManager sharedInstance] turnOffBackgroundMode];
+    [[SNZBackgroundTimer sharedInstance] turnOff];
     self.isLogging = NO;
 }
-
-//
-//- (BOOL)startLoggingMotionData {
-//    if (![self startLogging]) {
-//        return NO;
-//    }
-//}
-//
-//- (BOOL)startLoggingLocation {
-//    if (![self startLogging]) {
-//        return NO;
-//    }
-//}
-//
-//- (BOOL)startLoggingBeaconNearby {
-//    if (![self startLogging]) {
-//        return NO;
-//    }
-//}
-//
-//- (BOOL)startLoggingEnvironmentSound {
-//    //TODO: to be implemented if possible
-//    if (![self startLogging]) {
-//        return NO;
-//    }
-//    return YES;
-//}
-
 
 @end

@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		AF94D256822A8004CBA6426E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70BE4B9D24E9711A3826C65 /* libPods.a */; };
 		EE3978031B1F5CDB00277C13 /* SNZReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3978021B1F5CDB00277C13 /* SNZReachability.m */; };
-		EE3978061B1F637C00277C13 /* SNZWebUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3978051B1F637C00277C13 /* SNZWebUtils.m */; };
 		EE39781E1B219F1100277C13 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39781D1B219F1100277C13 /* SystemConfiguration.framework */; };
 		EE3978391B22C26D00277C13 /* SNZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3978381B22C26D00277C13 /* SNZModel.m */; };
+		EE39783D1B2357A600277C13 /* SNZNetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39783C1B2357A600277C13 /* SNZNetworkObserver.m */; };
 		EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */; };
 		EEA674B91ADAE6740005A355 /* SNZUserDataLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA674B81ADAE6740005A355 /* SNZUserDataLogger.m */; };
 		EEA674BC1ADAEFCE0005A355 /* SNZSensorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA674BB1ADAEFCE0005A355 /* SNZSensorManager.m */; };
@@ -28,11 +28,10 @@
 		EEC13FCB1AD3B190008B7E5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC13FCA1AD3B190008B7E5E /* Images.xcassets */; };
 		EEC13FCE1AD3B190008B7E5E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEC13FCC1AD3B190008B7E5E /* LaunchScreen.xib */; };
 		EEC13FDA1AD3B190008B7E5E /* SenzSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC13FD91AD3B190008B7E5E /* SenzSDKDemoTests.m */; };
-		EED860FF1B086F3700C4AE5E /* SNZBackgroundModeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EED860FE1B086F3700C4AE5E /* SNZBackgroundModeManager.m */; };
+		EED860FF1B086F3700C4AE5E /* SNZBackgroundTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = EED860FE1B086F3700C4AE5E /* SNZBackgroundTimer.m */; };
 		EED861091B087F9800C4AE5E /* NSArray+SNZUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EED861021B087F9800C4AE5E /* NSArray+SNZUtility.m */; };
 		EED8610B1B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EED861061B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m */; };
 		EEFBE8471ADBDD6C00E6CF17 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEFBE8461ADBDD6C00E6CF17 /* sample.mp3 */; };
-		EEFBE84E1ADBE0CB00E6CF17 /* SNZDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEFBE84D1ADBE0CB00E6CF17 /* SNZDBManager.m */; };
 		EEFBE8511ADBE12400E6CF17 /* SNZLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = EEFBE8501ADBE12400E6CF17 /* SNZLocationData.m */; };
 /* End PBXBuildFile section */
 
@@ -52,12 +51,11 @@
 		E6350405B54F89A06695DDCD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EE3978011B1F5CDB00277C13 /* SNZReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZReachability.h; sourceTree = "<group>"; };
 		EE3978021B1F5CDB00277C13 /* SNZReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZReachability.m; sourceTree = "<group>"; };
-		EE3978041B1F637C00277C13 /* SNZWebUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNZWebUtils.h; path = utils/SNZWebUtils.h; sourceTree = "<group>"; };
-		EE3978051B1F637C00277C13 /* SNZWebUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNZWebUtils.m; path = utils/SNZWebUtils.m; sourceTree = "<group>"; };
 		EE39781D1B219F1100277C13 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		EE3978361B22C09800277C13 /* SNZDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNZDefs.h; sourceTree = "<group>"; };
 		EE3978371B22C26D00277C13 /* SNZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZModel.h; sourceTree = "<group>"; };
 		EE3978381B22C26D00277C13 /* SNZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZModel.m; sourceTree = "<group>"; };
+		EE39783B1B2357A600277C13 /* SNZNetworkObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNZNetworkObserver.h; path = network/SNZNetworkObserver.h; sourceTree = "<group>"; };
+		EE39783C1B2357A600277C13 /* SNZNetworkObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNZNetworkObserver.m; path = network/SNZNetworkObserver.m; sourceTree = "<group>"; };
 		EE9209FE1AD3BACC0007D8F7 /* SNZLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZLocationManager.h; sourceTree = "<group>"; };
 		EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZLocationManager.m; sourceTree = "<group>"; };
 		EE920A011AD3C00D0007D8F7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -86,15 +84,13 @@
 		EEC13FD31AD3B190008B7E5E /* SenzSDKDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SenzSDKDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC13FD81AD3B190008B7E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEC13FD91AD3B190008B7E5E /* SenzSDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SenzSDKDemoTests.m; sourceTree = "<group>"; };
-		EED860FD1B086F3700C4AE5E /* SNZBackgroundModeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZBackgroundModeManager.h; sourceTree = "<group>"; };
-		EED860FE1B086F3700C4AE5E /* SNZBackgroundModeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZBackgroundModeManager.m; sourceTree = "<group>"; };
+		EED860FD1B086F3700C4AE5E /* SNZBackgroundTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZBackgroundTimer.h; sourceTree = "<group>"; };
+		EED860FE1B086F3700C4AE5E /* SNZBackgroundTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZBackgroundTimer.m; sourceTree = "<group>"; };
 		EED861011B087F9800C4AE5E /* NSArray+SNZUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SNZUtility.h"; sourceTree = "<group>"; };
 		EED861021B087F9800C4AE5E /* NSArray+SNZUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SNZUtility.m"; sourceTree = "<group>"; };
 		EED861051B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SNZUtility.h"; sourceTree = "<group>"; };
 		EED861061B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SNZUtility.m"; sourceTree = "<group>"; };
 		EEFBE8461ADBDD6C00E6CF17 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
-		EEFBE84C1ADBE0CB00E6CF17 /* SNZDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNZDBManager.h; sourceTree = "<group>"; };
-		EEFBE84D1ADBE0CB00E6CF17 /* SNZDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNZDBManager.m; sourceTree = "<group>"; };
 		EEFBE84F1ADBE12400E6CF17 /* SNZLocationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNZLocationData.h; path = model/SNZLocationData.h; sourceTree = "<group>"; };
 		EEFBE8501ADBE12400E6CF17 /* SNZLocationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNZLocationData.m; path = model/SNZLocationData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,12 +136,13 @@
 			path = libs;
 			sourceTree = "<group>";
 		};
-		EE3978351B22C07B00277C13 /* def */ = {
+		EE39783A1B23575500277C13 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				EE3978361B22C09800277C13 /* SNZDefs.h */,
+				EE39783B1B2357A600277C13 /* SNZNetworkObserver.h */,
+				EE39783C1B2357A600277C13 /* SNZNetworkObserver.m */,
 			);
-			name = def;
+			name = network;
 			sourceTree = "<group>";
 		};
 		EE9209FD1AD3BA950007D8F7 /* sdk */ = {
@@ -153,7 +150,7 @@
 			children = (
 				EEA674B71ADAE6740005A355 /* SNZUserDataLogger.h */,
 				EEA674B81ADAE6740005A355 /* SNZUserDataLogger.m */,
-				EE3978351B22C07B00277C13 /* def */,
+				EE39783A1B23575500277C13 /* network */,
 				EE3978001B1F5C9700277C13 /* libs */,
 				EED861001B087F5E00C4AE5E /* utils */,
 				EEA674CC1ADBB8180005A355 /* managers */,
@@ -207,8 +204,8 @@
 				EE9209FF1AD3BACC0007D8F7 /* SNZLocationManager.m */,
 				EEA674C51ADBAEDF0005A355 /* SNZBeaconManager.h */,
 				EEA674C61ADBAEDF0005A355 /* SNZBeaconManager.m */,
-				EED860FD1B086F3700C4AE5E /* SNZBackgroundModeManager.h */,
-				EED860FE1B086F3700C4AE5E /* SNZBackgroundModeManager.m */,
+				EED860FD1B086F3700C4AE5E /* SNZBackgroundTimer.h */,
+				EED860FE1B086F3700C4AE5E /* SNZBackgroundTimer.m */,
 			);
 			name = managers;
 			sourceTree = "<group>";
@@ -283,8 +280,6 @@
 				EED861021B087F9800C4AE5E /* NSArray+SNZUtility.m */,
 				EED861051B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.h */,
 				EED861061B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m */,
-				EE3978041B1F637C00277C13 /* SNZWebUtils.h */,
-				EE3978051B1F637C00277C13 /* SNZWebUtils.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -294,8 +289,6 @@
 			children = (
 				EEA674C91ADBB80B0005A355 /* SNZCommonStore.h */,
 				EEA674CA1ADBB80B0005A355 /* SNZCommonStore.m */,
-				EEFBE84C1ADBE0CB00E6CF17 /* SNZDBManager.h */,
-				EEFBE84D1ADBE0CB00E6CF17 /* SNZDBManager.m */,
 			);
 			name = store;
 			sourceTree = "<group>";
@@ -444,14 +437,13 @@
 			files = (
 				EEA674B91ADAE6740005A355 /* SNZUserDataLogger.m in Sources */,
 				EEA674CF1ADBD0560005A355 /* SNZSensorData.m in Sources */,
-				EE3978061B1F637C00277C13 /* SNZWebUtils.m in Sources */,
 				EEFBE8511ADBE12400E6CF17 /* SNZLocationData.m in Sources */,
 				EEC13FC61AD3B190008B7E5E /* ViewController.m in Sources */,
 				EE3978031B1F5CDB00277C13 /* SNZReachability.m in Sources */,
+				EE39783D1B2357A600277C13 /* SNZNetworkObserver.m in Sources */,
 				EEA674CB1ADBB80B0005A355 /* SNZCommonStore.m in Sources */,
-				EED860FF1B086F3700C4AE5E /* SNZBackgroundModeManager.m in Sources */,
+				EED860FF1B086F3700C4AE5E /* SNZBackgroundTimer.m in Sources */,
 				EED8610B1B087F9800C4AE5E /* NSMutableDictionary+SNZUtility.m in Sources */,
-				EEFBE84E1ADBE0CB00E6CF17 /* SNZDBManager.m in Sources */,
 				EEA674C71ADBAEDF0005A355 /* SNZBeaconManager.m in Sources */,
 				EEC13FC31AD3B190008B7E5E /* AppDelegate.m in Sources */,
 				EE920A001AD3BACC0007D8F7 /* SNZLocationManager.m in Sources */,

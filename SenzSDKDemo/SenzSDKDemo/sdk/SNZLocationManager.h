@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface SNZLocationManager : NSObject<CLLocationManagerDelegate>
+
+/// in seconds
+@property (nonatomic, assign) CGFloat triggerLoggingInteval;
 
 - (void)startListening;
 - (void)stopListening;

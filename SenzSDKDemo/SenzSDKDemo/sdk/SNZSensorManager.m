@@ -9,8 +9,7 @@
 #import "SNZSensorManager.h"
 #import "SNZSensorData.h"
 #import "SNZCommonStore.h"
-#import "SNZBackgroundModeManager.h"
-#import "SNZDefs.h"
+#import "SNZBackgroundTimer.h"
 
 @interface SNZSensorManager ()
 
@@ -36,14 +35,13 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 {
     self = [super init];
     if (self) {
-        self.motionManager = [CMMotionManager new];
-
         // init data
         self.triggerLoggingInteval = kDefaultTriggerLoggingInteval;
         self.sensorUpdatingInteval = kDefaultSensorLoggingInteval;
         self.loggingPeriodLength = kDefaultSensorLoggingPeriodLength;
 
-        // error handling
+        // init motion manager
+        self.motionManager = [CMMotionManager new];
         if (![self.motionManager isAccelerometerAvailable] && ![self.motionManager isGyroAvailable]) {
             // no sensor available
             return nil;
@@ -62,15 +60,11 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 #pragma - Start & Stop listening
 
 - (void)startListening {
-    SNZBackgroundModeManager* backgroundModeManager = [SNZBackgroundModeManager sharedInstance];
-    [backgroundModeManager turnOnBackgroundMode];
+    SNZBackgroundTimer* backgroundModeManager = [SNZBackgroundTimer sharedInstance];
+    [backgroundModeManager turnOn];
 
     __weak typeof(self)weakSelf = self;
-    [backgroundModeManager addObserverWithIdentifier:@"SNZSensorManager" forInteval:self.triggerLoggingInteval usingBlock:^(CMTime time) {
-        if (time.value < 0.01) {
-            return;
-        }
-
+    [backgroundModeManager addTimeObserverWithIdentifier:@"SNZSensorManager" forInteval:self.triggerLoggingInteval block:^(CMTime time) {
         [weakSelf turnOnSensorFor:weakSelf.loggingPeriodLength]; // in seconds
     }];
 }
@@ -127,7 +121,7 @@ static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
     @synchronized(self.sensorEvent) {
         self.isSensorOn = NO;
 
-        [SNZCommonStore saveDataEventuallyWithClassName:kSNZAVClassNameSensor model:self.sensorEvent];
+        [SNZCommonStore saveDataEventuallyWithModel:self.sensorEvent];
         self.sensorEvent = nil;
     }
 }

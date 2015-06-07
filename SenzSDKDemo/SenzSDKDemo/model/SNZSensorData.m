@@ -37,6 +37,23 @@
     return model;
 }
 
+#pragma mark - NSCoding
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.timestamp = [[aDecoder decodeObjectForKey:@"timestamp"] doubleValue];
+        self.sensorName = [aDecoder decodeObjectForKey:@"sensorName"];
+        self.values = [aDecoder decodeObjectForKey:@"values"];
+    }
+    return  self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:@(self.timestamp) forKey:@"timestamp"];
+    [aCoder encodeObject:self.sensorName forKey:@"sensorName"];
+    [aCoder encodeObject:self.values forKey:@"values"];
+}
+
 @end
 
 @implementation SNZSensorEvent
@@ -57,6 +74,21 @@
     }
 
     [self.events addObject:sensorData];
+}
+
+#pragma mark - NSCoding
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        self.deviceUUID = [aDecoder decodeObjectForKey:@"deviceUUID"];
+        self.events = [aDecoder decodeObjectForKey:@"events"];
+    }
+    return  self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.deviceUUID forKey:@"deviceUUID"];
+    [aCoder encodeObject:self.events forKey:@"events"];
 }
 
 @end

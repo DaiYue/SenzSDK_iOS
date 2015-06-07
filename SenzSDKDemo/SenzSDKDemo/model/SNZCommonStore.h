@@ -7,19 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 @class SNZModel;
 
 @interface SNZCommonStore : NSObject
 
+@property (nonatomic, assign) BOOL shouldUploadCachedDataWhenWifiAvailable;
+
++ (SNZCommonStore *)sharedInstance;
+
 // == Common Data ==
 + (NSString*)deviceUUID;
 
-// == DB or LeanCloud ==
-+ (void)saveDataEventuallyWithClassName:(NSString*)className model:(SNZModel*)model;
+// == Cache or Upload ==
++ (void)saveDataEventuallyWithModel:(SNZModel*)model;
 
-// == LeanCloud ==
+// == Upload ==
 + (void)uploadDataWithClassName:(NSString*)className dictionary:(NSDictionary*)dictionary;
-+ (void)uploadDataWithClassName:(NSString*)className model:(SNZModel*)model;
++ (void)uploadDataWithModel:(SNZModel*)model block:(AVBooleanResultBlock)block;
 
 @end

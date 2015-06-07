@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 Senz+. All rights reserved.
 //
 
-#import "SNZBackgroundModeManager.h"
+#import "SNZBackgroundTimer.h"
 #import <UIKit/UIKit.h>
 #import "NSMutableDictionary+SNZUtility.h"
 
-@interface SNZBackgroundModeManager ()
+@interface SNZBackgroundTimer ()
 
 @property (nonatomic, assign) BOOL isBackgroundModeOn;
 @property (nonatomic, strong) AVQueuePlayer *slientPlayer;
@@ -22,11 +22,11 @@
 
 static NSString* const kSilentMusicFileName = @"sample";
 
-@implementation SNZBackgroundModeManager
+@implementation SNZBackgroundTimer
 
-+(SNZBackgroundModeManager *)sharedInstance
++(SNZBackgroundTimer *)sharedInstance
 {
-    static SNZBackgroundModeManager *sharedSingleton = nil;
+    static SNZBackgroundTimer *sharedSingleton = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^(void) {
         sharedSingleton = [[self alloc] init];
@@ -45,7 +45,7 @@ static NSString* const kSilentMusicFileName = @"sample";
 
 #pragma mark - Turn On / Off
 
-- (void)turnOnBackgroundMode {
+- (void)turnOn {
     if (self.isBackgroundModeOn == YES) {
         return; // already on
     }
@@ -62,7 +62,7 @@ static NSString* const kSilentMusicFileName = @"sample";
     self.isBackgroundModeOn = YES;
 }
 
-- (void)turnOffBackgroundMode {
+- (void)turnOff {
     if (self.isBackgroundModeOn == NO) {
         return; // already off
     }
@@ -110,14 +110,22 @@ static NSString* const kSilentMusicFileName = @"sample";
 
 #pragma mark - Observers
 
-- (void)addObserverWithIdentifier:(NSString*)identifier forInteval:(NSInteger)inteval usingBlock:(void (^)(CMTime time))block {
+- (void)addTimeObserverWithIdentifier:(NSString*)identifier forInteval:(NSInteger)inteval block:(void (^)(CMTime time))block {
     if (identifier.length == 0) {
         return;
     }
 
     id timeObserver = [self.slientPlayer addPeriodicTimeObserverForInterval:CMTimeMake(inteval * 1000, 1000)
                             queue:dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
-                            usingBlock:block];
+                            usingBlock:^(CMTime time) {
+                                if (time.value < 0.01) {
+                                    return;
+                                }
+
+                                if (block != nil) {
+                                    block(time);
+                                }
+                            }];
     [self.observerDictionary setObjectSafe:timeObserver forKey:identifier];
 }
 

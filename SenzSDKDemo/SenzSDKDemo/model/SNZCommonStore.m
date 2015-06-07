@@ -7,14 +7,14 @@
 //
 
 #import "SNZCommonStore.h"
-#import <AVOSCloud/AVOSCloud.h>
 #import "SNZModel.h"
-#import "SNZWebUtils.h"
+#import "SNZNetworkObserver.h"
 #import "SNZReachability.h"
+#import "TMCache.h"
 
 @interface SNZCommonStore ()
 
-@property (nonatomic, strong) SNZReachability* reachability;
+@property (atomic, assign) BOOL isUploadingCachedData;
 
 @end
 
@@ -24,28 +24,18 @@
 {
     self = [super init];
     if (self) {
-        SNZReachability *reachability = [SNZReachability reachabilityForLocalWiFi];
-        [reachability startNotifier];
-        self.reachability = reachability;
-
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wifiReachabilityDidChange:) name:kReachabilityChangedNotification object:nil];
+        self.isUploadingCachedData = NO;
     }
     return self;
 }
 
-- (void)dealloc {
-    [self.reachability stopNotifier];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
-}
-
-#pragma mark - DB Cache
-
-- (void)wifiReachabilityDidChange:(NSNotification *)notification {
-    SNZReachability *reachability = (SNZReachability *)[notification object];
-
-    if ([SNZWebUtils isWifiAvailableWithReachablity:reachability]) {
-        // check db cache: if not empty, start uploading cached data
-    }
++ (SNZCommonStore *)sharedInstance {
+    static SNZCommonStore *sharedSingleton = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken,^(void) {
+        sharedSingleton = [[self alloc] init];
+    });
+    return sharedSingleton;
 }
 
 #pragma mark - Common Data
@@ -61,21 +51,27 @@
     return deviceUUID;
 }
 
-#pragma mark - DB or LeanCloud
+#pragma mark - Upload or Cache
 
-+ (void)saveDataEventuallyWithClassName:(NSString *)className model:(SNZModel *)model {
++ (void)saveDataEventuallyWithModel:(SNZModel *)model {
     if (model == nil) {
         return;
     }
 
-    if ([SNZWebUtils isWifiAvailable]) {
-        [self uploadDataWithClassName:className model:model];
+    if ([[SNZNetworkObserver sharedInstance] isWifiAvailable]) {
+        [self uploadDataWithModel:model block:^(BOOL succeeded, NSError *error){
+            if (succeeded == NO) {
+                [self cacheModel:model];
+            }
+        }];
+
+        [[SNZCommonStore sharedInstance] startUploadingCachedData];
     } else {
-        // cache in db
+        [self cacheModel:model];
     }
 }
 
-#pragma mark - LeanCloud
+#pragma mark - Upload
 
 + (void)uploadDataWithClassName:(NSString*)className dictionary:(NSDictionary*)dictionary {
     if (dictionary == nil) {
@@ -86,9 +82,103 @@
     [object saveInBackground];
 }
 
-+ (void)uploadDataWithClassName:(NSString*)className model:(SNZModel*)model {
++ (void)uploadDataWithModel:(SNZModel*)model block:(AVBooleanResultBlock)block {
     AVObject* object = [model avObject];
-    [object saveInBackground];
+    [object saveInBackgroundWithBlock:block];
+}
+
++ (BOOL)uploadDataWithModel:(SNZModel*)model {
+    AVObject* object = [model avObject];
+    return [object save];
+}
+
+#pragma mark - Upload Cache
+
+- (void)setShouldUploadCachedDataWhenWifiAvailable:(BOOL)shouldUpload {
+    _shouldUploadCachedDataWhenWifiAvailable = shouldUpload;
+
+    if (shouldUpload) {
+        [self uploadCachedDataWhenWifiAvailable];
+    } else {
+        [self neverUploadCachedData];
+        [self stopUploadingCachedData];
+    }
+}
+
+- (void)uploadCachedDataWhenWifiAvailable {
+    __weak typeof(self)weakSelf = self;
+
+    SNZNetworkObserver* networkObserver = [SNZNetworkObserver sharedInstance];
+    if ([networkObserver isWifiAvailable]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            [weakSelf startUploadingCachedData];
+        });
+    }
+
+    [networkObserver startObservingWifiStatusWithChangedBlock:^(BOOL isAvailable) {
+        if (isAvailable == NO) {
+            [weakSelf stopUploadingCachedData];
+        }
+    }];
+}
+
+- (void)neverUploadCachedData {
+    [[SNZNetworkObserver sharedInstance] stopObservingWifiStatusChange];
+}
+
+- (void)startUploadingCachedData {
+    if (self.isUploadingCachedData == YES) {
+        // already uploading
+        return;
+    }
+
+    self.isUploadingCachedData = YES;
+
+    TMDiskCache* diskCache = [TMDiskCache sharedCache];
+
+    // collect all the keys
+    NSMutableArray* keyArray = [NSMutableArray array];
+    [diskCache enumerateObjectsWithBlock:^(TMDiskCache *cache, NSString *key, id<NSCoding> object, NSURL *fileURL) {
+        if ([key hasPrefix:@"SNZ"]) {
+            [keyArray addObject:key];
+        }
+    }];
+
+    // upload each record according to the keys
+    for (NSString* key in keyArray) {
+        if (self.isUploadingCachedData == NO) {
+            break; // had forced to stop
+        }
+
+        SNZModel* model = (SNZModel*)[diskCache objectForKey:key];
+
+        BOOL succeeded = [SNZCommonStore uploadDataWithModel:model];
+        if (succeeded) {
+            [diskCache removeObjectForKey:key block:nil];
+        } else {
+            break; // error occured. stop uploading
+        }
+    }
+
+    self.isUploadingCachedData = NO;
+}
+
+- (void)stopUploadingCachedData {
+    self.isUploadingCachedData = NO;
+}
+
+#pragma mark - Cache
+
++ (void)cacheModel:(SNZModel*)model {
+    if (model == nil) {
+        return;
+    }
+    
+    [[TMDiskCache sharedCache] setObject:model forKey:[self cacheKey]];
+}
+
++ (NSString*)cacheKey {
+    return [NSString stringWithFormat:@"SNZ%@", [[NSUUID UUID] UUIDString]];
 }
 
 @end

@@ -17,12 +17,7 @@
 @property (nonatomic, strong) NSString* deviceUUID;
 @property (nonatomic, assign) CGFloat timestamp;
 
-@property (nonatomic, assign) CLLocation* location;
-@property (nonatomic, assign) CGFloat altitude;
-@property (nonatomic, assign) CGFloat horizontalAccuracy;
-@property (nonatomic, assign) CGFloat verticalAccuracy;
-@property (nonatomic, assign) CGFloat cource;
-@property (nonatomic, assign) CGFloat speed;
+@property (nonatomic, strong) CLLocation* location;
 
 + (instancetype)dataWithLocation:(CLLocation*)location;
 

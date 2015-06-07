@@ -9,7 +9,6 @@
 #import "SNZLocationManager.h"
 #import "SNZLocationData.h"
 #import "SNZCommonStore.h"
-#import "SNZDefs.h"
 
 @interface SNZLocationManager ()
 
@@ -54,12 +53,12 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"Fetch location failed with error: %@", error);
+//    NSLog(@"Fetch location failed with error: %@", error);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)nextLocation fromLocation:(CLLocation *)prevLocation {
     SNZLocationData* model = [SNZLocationData dataWithLocation:nextLocation];
-    [SNZCommonStore saveDataEventuallyWithClassName:kSNZAVClassNameLocation model:model];
+    [SNZCommonStore saveDataEventuallyWithModel:model];
 }
 
 @end

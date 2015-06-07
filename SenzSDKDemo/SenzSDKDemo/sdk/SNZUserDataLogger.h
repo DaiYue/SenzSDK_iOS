@@ -11,13 +11,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
 
-@interface SNZUserDataLogger : NSObject<AVAudioSessionDelegate>
+@interface SNZUserDataLogger : NSObject
 
 - (BOOL)startLogging;
 - (void)stopLogging;
-//
-//- (BOOL)startLoggingSensorData;
-//- (BOOL)startLoggingLocation;
-//- (BOOL)startLoggingBeaconNearby;
 
 @end
