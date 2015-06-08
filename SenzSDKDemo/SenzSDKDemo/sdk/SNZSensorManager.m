@@ -23,7 +23,7 @@
 
 @end
 
-static const CGFloat kDefaultTriggerLoggingInteval = 15;
+static const CGFloat kDefaultTriggerLoggingInteval = 15 * 60;
 static const CGFloat kDefaultSensorLoggingInteval = 0.1;
 static const CGFloat kDefaultSensorLoggingPeriodLength = 10;
 
