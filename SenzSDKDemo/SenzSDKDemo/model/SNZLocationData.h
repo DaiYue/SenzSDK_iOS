@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSString* deviceUUID;
 @property (nonatomic, assign) CGFloat timestamp;
+@property (nonatomic, strong) NSString* type;
 
 @property (nonatomic, strong) CLLocation* location;
 

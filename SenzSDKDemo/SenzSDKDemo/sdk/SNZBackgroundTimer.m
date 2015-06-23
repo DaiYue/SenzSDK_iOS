@@ -82,7 +82,7 @@ static NSString* const kSilentMusicFileName = @"sample";
 - (void)configureAudioSession {
     NSError *sessionError = nil;
     AVAudioSession* session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions: AVAudioSessionCategoryOptionMixWithOthers error:&sessionError];
+    [session setCategory:AVAudioSessionCategoryPlayback withOptions: AVAudioSessionCategoryOptionMixWithOthers error:&sessionError];
     if (sessionError != nil) {
         //TODO: error: session error
         return;

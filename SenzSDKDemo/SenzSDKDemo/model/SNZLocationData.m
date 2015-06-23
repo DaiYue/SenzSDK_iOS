@@ -27,6 +27,7 @@
     model.deviceUUID = [SNZCommonStore deviceUUID];
     model.timestamp = [location.timestamp timeIntervalSince1970];
     model.location = location;
+    model.type = @"Earth";
 
     return model;
 }
@@ -40,6 +41,7 @@
     [object setObject:@(self.timestamp) forKey:@"timestamp"];
 
     // location
+    [object setObject:self.type forKey:@"type"];
     [object setObject:[AVGeoPoint geoPointWithLocation:self.location] forKey:@"location"];
     [object setObject:@(self.location.altitude) forKey:@"altitude"];
     [object setObject:@(self.location.horizontalAccuracy) forKey:@"horizontalAccuracy"];
@@ -55,6 +57,7 @@
         self.deviceUUID = [aDecoder decodeObjectForKey:@"deviceUUID"];
         self.timestamp = [[aDecoder decodeObjectForKey:@"timestamp"] doubleValue];
         self.location = [aDecoder decodeObjectForKey:@"location"];
+        self.type = [aDecoder decodeObjectForKey:@"type"];
     }
     return self;
 }
@@ -63,6 +66,7 @@
     [aCoder encodeObject:self.deviceUUID forKey:@"deviceUUID"];
     [aCoder encodeObject:@(self.timestamp) forKey:@"timestamp"];
     [aCoder encodeObject:self.location forKey:@"location"];
+    [aCoder encodeObject:self.type forKey:@"type"];
 }
 
 @end

@@ -87,9 +87,9 @@
     [object saveInBackgroundWithBlock:block];
 }
 
-+ (BOOL)uploadDataWithModel:(SNZModel*)model {
++ (BOOL)uploadDataWithModel:(SNZModel*)model error:(NSError **)error {
     AVObject* object = [model avObject];
-    return [object save];
+    return [object save:error];
 }
 
 #pragma mark - Upload Cache
@@ -110,7 +110,7 @@
 
     SNZNetworkObserver* networkObserver = [SNZNetworkObserver sharedInstance];
     if ([networkObserver isWifiAvailable]) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [weakSelf startUploadingCachedData];
         });
     }
@@ -127,6 +127,10 @@
 }
 
 - (void)startUploadingCachedData {
+    AVObject* object = [AVObject objectWithClassName:@"SNZLog"];
+    [object setObject:@"Start uploading!" forKey:@"info"];
+    [object saveEventually];
+
     if (self.isUploadingCachedData == YES) {
         // already uploading
         return;
@@ -152,13 +156,21 @@
 
         SNZModel* model = (SNZModel*)[diskCache objectForKey:key];
 
-        BOOL succeeded = [SNZCommonStore uploadDataWithModel:model];
-        if (succeeded) {
+        NSError* error = nil;
+        if ([SNZCommonStore uploadDataWithModel:model error:&error]) {
             [diskCache removeObjectForKey:key block:nil];
         } else {
+            AVObject* object = [AVObject objectWithClassName:@"SNZLog"];
+            [object setObject:error.userInfo forKey:@"errorUserInfo"];
+            [object setObject:error.localizedDescription forKey:@"errorDescription"];
+            [object saveEventually];
             break; // error occured. stop uploading
         }
     }
+
+    object = [AVObject objectWithClassName:@"SNZLog"];
+    [object setObject:@"Uploading ended!" forKey:@"info"];
+    [object saveEventually];
 
     self.isUploadingCachedData = NO;
 }
@@ -173,8 +185,10 @@
     if (model == nil) {
         return;
     }
-    
-    [[TMDiskCache sharedCache] setObject:model forKey:[self cacheKey]];
+
+    TMDiskCache* diskCache = [TMDiskCache sharedCache];
+    diskCache.byteLimit = 5 * 1024 * 1024;
+    [diskCache setObject:model forKey:[self cacheKey]];
 }
 
 + (NSString*)cacheKey {

@@ -25,7 +25,7 @@
         CLLocationManager* locationManager = [CLLocationManager new];
         locationManager.delegate = self;
 
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.distanceFilter = 10.0;
 
         [locationManager requestAlwaysAuthorization];
